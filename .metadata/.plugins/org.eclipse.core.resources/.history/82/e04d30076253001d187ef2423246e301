@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+    <h1>HTML Image Tag</h1>
+    
+    <!-- 
+        img 태그의 속성(attribute):
+        - alt: alternative. 이미지 파일을 찾을 수 없을 때 이미지 위치에 보여질 텍스트.
+               음성 인식 소프트웨어가 사용할 수 있음.
+        - src: source. 이미지가 저장된 폴더 위치, 이미지 파일 이름.
+     -->
+    <img alt="에펠탑" src="images/eiffel_tower.jpg">
+    <img alt="금문교" src="images/golden_gate_bridge.jpg">
+    
+    
+</body>
+</html>

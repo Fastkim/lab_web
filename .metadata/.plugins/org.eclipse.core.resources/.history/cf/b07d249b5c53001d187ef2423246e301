@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+
+    <h1>Block Sectioning Tag</h1>
+    
+    <!-- div: division. 클라이언트에서 컨텐트가 보여질 (block) 영역을 지정하기 위한 태그.
+         컨텐트들의 스타일(CSS) 속성을 지정하기 위해서 많이 사용.
+     -->
+    <div style="border: 2px solid red; margin: 16px; background-color: cyan;">Division 1</div>
+    <div>Division 2</div>
+    <div>
+        <!-- p: paragraph. 문단. 텍스트 문단이 들어갈 영역을 지정하기 위한 태그. -->
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </div>
+    
+    <hr/> <!-- hr: horizontal ruler. 가로선 -->
+    
+    <h1>Inline Sectioning Tag</h1>
+    <!-- span: inline 요소가 들어갈 영역을 지정하기 위한 태그. 
+         inline 요소들의 스타일(CSS)을 설정하기 위해서 많이 이용.
+    -->
+    <div>
+        <span style="color: red;">inline</span> 요소가 들어갈 영역을 지정하기 위한 태그.
+        <br/>
+        <strong>inline</strong> 요소들의 <em>스타일(CSS)</em>을 설정하기 위해서 많이 이용.
+    </div>
+
+</body>
+</html>

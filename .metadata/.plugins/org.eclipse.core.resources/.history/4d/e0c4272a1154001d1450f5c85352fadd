@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+
+    <h1>HTML Form Tag</h1>
+    
+    <!-- 
+    브라우저(클라이언트)에서 사용자의 입력을 받아서, 입력 내용을 서버로 전송하는 방법:
+    1. <form> 태그 안에서 입력 요소(input element)를 작성.
+    2. <form> 태그 안의 "submit" 버튼을 클릭하면 입력 요소에 입력된 내용들이 서버로 전송됨.
+    
+    전송 방식:
+    1. GET 방식: 클라이언트가 보내는 데이터가 요청 주소에 질의 문자열(query string)에 포함되는 방식.
+       - 요청 주소(request URL): 프로토콜://서버주소[:포트번호]/요청주소?질의문자열   
+       - 요청 주소와 질의 문자열은 ?로 구분.
+       - 질의 문자열 형식: parameter1=value1&param2=value2
+       - 요청 파라미터는 &로 구분.
+       - 요청 URL 예: http://localhost:8888/06_result.html?keyword=검색어
+    2. POST 방식: 클라이언트가 보내는 데이터가 요청 주소에 노출되지 않고,
+    요청 패킷 본체(packet body)에 포함되서 전송되는 방식.
+        - GET 방식은 전송되는 데이터 크기의 제한이 있지만, POST 방식은 전송 데이터 크기 제한이 없음.
+    
+    <input> 태그의 속성(attribute):
+     - type: 입력 타입. text, password, submit, ...
+     - name: 요청 파라미터 이름. 서버로 전송하는 데이터의 (변수) 이름.
+     - value: input 요소에 입력된 값.
+     - placeholder: input에 입력할 정보에 대한 힌트.
+     - required: 필수 입력 항목인 경우에 사용.
+     - autofocus: HTML 페이지가 로딩될 때 포커스를 줄 입력 요소에 사용.
+    -->
+     
+    <h2>GET 방식 전송</h2>
+    <form method="get" action="06_result.html">
+        <input type="text" name="keyword" placeholder="검색어 입력" autofocus/>
+        <input type="submit" value="검색" />
+    </form>
+    
+    <h2>POST 방식 전송</h2>
+    <form method="post" action="06_result.html">
+        <input type="text" name="userid" placeholder="아이디" required />
+        <input type="password" name="pwd" placeholder="비밀번호" required />
+        <input type="submit" value="로그인" />
+    </form>
+    
+    <h2>여러가지 입력 타입</h2>
+    <form action="06_result.html"> <!-- form 태그에서 method 속성을 설정하지 않으면 기본값은 GET -->
+        <input type="text" name="userid" placeholder="아이디" />
+        <br/>
+        <input type="password" name="pwd" placeholder="비밀번호" />
+        <br/>
+        <input type="email" name="email" placeholder="이메일" required/>
+        <br/>
+        <input type="number" name = "age" placeholder="나이">
+        <br/>
+        <input type="date" name = "birthday" />
+        
+        <input type="submit" value="제출" />
+        
+    </form>
+
+</body>
+</html>

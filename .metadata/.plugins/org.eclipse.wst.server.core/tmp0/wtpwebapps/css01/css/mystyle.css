@@ -1,0 +1,7 @@
+@charset "UTF-8";
+div {
+    border: 2px solid gray; /* 테두리선 */
+    padding: 16px; /* 테두리선과 안쪽 컨텐트 사이의 여백 */
+    margin: 16px; /* 테두리선과 바깥쪽 다른 HTML 요소 사이의 여백 */
+}
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+
+    <h1>HTML Form Tag</h1>
+    
+    <!-- 
+    브라우저(클라이언트)에서 사용자의 입력을 받아서, 입력 내용을 서버로 전송하는 방법:
+    1. <form> 태그 안에서 입력 요소(input element)를 작성.
+    2. <form> 태그 안의 "submit" 버튼을 클릭하면 입력 요소에 입력된 내용들이 서버로 전송됨.    
+     -->
+     
+    <h2>GET 방식 전송</h2>
+    <form method="get" action="https://search.naver.com/search.naver">
+        <input type="text" name="q" />
+        <input type="submit" value="검색" />
+    </form>
+
+</body>
+</html>
