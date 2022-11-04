@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+
+<style>
+    #disp-none {
+        display: none; /* 요소가 차지하는 영역(가로, 세로 크기)가 없음 */
+    }
+    
+    #vis-hidden {
+        visibility: hidden; /* 보이지는 않지만, 차지하는 영역(가로, 세로 크기)는 있음 */
+    }
+    
+    div, span {
+        border: 1px solid gray;
+    }
+
+    div {
+        width: 200px;
+        height: 100px;
+        margin: 32px;
+        padding: 16px;
+    }
+    
+    span {
+        width: 200px; /* inline 요소는 width, height 속성 값이 적용되지 않음! */
+        padding: 8px;
+        margin: 16px;
+    }
+    
+    .div-inline {
+        display: inline-block;
+        /* 원래 block 속성인 div를 inline-block으로 변경 */
+    }
+
+    .span-block {
+        display: block;
+        /* 원래 inline 속성인 span을 block으로 변경 */
+    }
+    
+</style>
+
+</head>
+<body>
+
+    <h1>Display 속성</h1>
+    
+    <h2 id="disp-none">display: none</h2>
+    <h2 id="vis-hidden">visibility: hidden</h2>
+    
+    <hr/>
+    
+    <div>
+    여기는 <span>division 1</span>입니다.
+    </div>
+    
+    <hr/>
+    
+    <div class="div-inline">Division 2</div>
+    <div class="div-inline">Division 3</div>
+    
+    <span class="span-block">Span 2</span>
+    <span class="span-block">Span 3</span>
+    
+    <!--  
+      CSS display 속성(property):
+      1. block: <div>, <p>, <h1>, <header>, <main>, <section>, <article>, <nav>, <aside>, <footer>, ...
+         - 항상 새 줄(new line)에서 시작.
+         - width, height를 변경할 수 있음!
+         - margin, padding을 변경할 수 있음.
+      2. inline: <span>, <strong>, <em>, <a>, ...
+         - 같은 줄에서 시작.
+         - width, height를 변경할 수 없음!
+         - margin, padding을 변경할 수 있음.
+      3. inline-block: <img>
+         - inline 속성: 같은 줄에서 시작.
+         - block 속성: width, height를 변경할 수 있음!
+      4. none: 화면에 표시(display)하지 않음. 요소가 차지하는 영역(크기)가 없음!
+         (비교) visibility 속성 값을 "hidden"으로 설정한 경우에는,
+         화면에 보이지는 않지만 차지하는 영역은 있음.
+    -->
+
+</body>
+</html>

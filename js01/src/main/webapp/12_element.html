@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+    div {
+        border: 1px solid gray;
+        margin: 8px;
+        padding: 8px;
+    }
+</style>
+</head>
+<body>
+
+    <h1>HTML element 찾기 &amp; 이벤트 리스너 등록</h1>
+    <div id="d1" class="c1">Division 1 (id=d1, class=c1)</div>
+    <div id="d2" class="c1">Division 2 (id=d2, class=c1)</div>
+    <div id="d3" class="c2">Division 3 (id=d3, class=c2)</div>
+    <div id="d4" class="c2">Division 4 (id=d4, class=c2)</div>
+    
+    <button id="btn1">id로 찾기</button>
+    <button id="btn2">class로 찾기</button>
+    <button id="btn3">tag로 찾기</button>
+    <button id="btn4">querySelector</button>
+    <button id="btn5">querySelectorAll</button>
+    
+    <script>
+    // id 속성 값으로 HTML element를 찾는 방법:
+    const btn1 = document.getElementById('btn1');
+    
+    // HTML element에 이벤트 리스너를 등록: element.addEventListener('이벤트 이름', 리스너 함수)
+    // btn1에 'click' 이벤트 리스너를 등록.
+    btn1.addEventListener('click', function() {
+    	// id='d1'인 element를 찾음.
+    	const d1 = document.getElementById('d1');
+    	// element의 바탕색을 변경.
+    	d1.style.backgroundColor = 'lavender';
+    });
+    
+    const btn2 = document.getElementById('btn2');
+    btn2.addEventListener('click', function() {
+    	// class="c2" element들을 찾음.
+    	const divisions = document.getElementsByClassName('c2');
+    	console.log(divisions); // getElementsByClassName()은 배열(array)을 리턴.
+    	//for (let i = 0; i < divisions.length; i++) { divisions[i] ... }
+    	for (let div of divisions) {
+    		div.style.backgroundColor = 'green';
+    	}
+    });
+    
+    const btn3 = document.getElementById('btn3');
+    btn3.addEventListener('click', function() {
+    	// HTML tag 이름이 div인 모든 element들을 찾음.
+    	const divisions = document.getElementsByTagName('div');
+    	// 모든 div 태그 요소들의 바탕색 변경.
+    	for (let div of divisions) {
+    		div.style.backgroundColor = 'lightpink';
+    	}
+    });
+    
+    // CSS selector를 argument로 사용하는 메서드.
+    // document.querySelector('selector'): selector로 찾을 수 있는 "첫번째" 요소를 리턴.
+    // document.querySelectorAll('selector'): selector로 찾을 수 있는 "모든" 요소들의 배열을 리턴.
+    
+    const btn4 = document.querySelector('#btn4');
+    btn4.addEventListener('click', function() {
+    	// class="c1"인 첫번째 요소만 찾음.
+    	const c1 = document.querySelector('.c1');
+    	
+    	// 요소의 배경색, 글자색, 폰트 굵기 변경
+    	c1.style.backgroundColor = 'dodgerblue';
+    	c1.style.color = 'white';
+    	c1.style.fontWeight = 'bold';
+    });
+    
+    const btn5 = document.querySelector('#btn5');
+    btn5.addEventListener('click', function() {
+    	// class="c2"인 모든 요소들을 찾음.
+    	const divisions = document.querySelectorAll('.c2');
+    	
+    	// 모든 요소들의 배경색, 글자색, 폰트 굵기 변경
+    	for (let div of divisions) {
+    		div.style.backgroundColor = 'crimson';
+    		div.style.color = 'white';
+    		div.style.fontWeight = 'bold';
+    	}
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+
+<style>
+    .list { /* class 속성 값이 "list"인 요소를 찾음 */
+        list-style: none; /* list style을 제거. bullet을 사용하지 않음 */
+        padding: 8px;
+        background-color: mediumseagreen;    
+    }
+    
+    .list > li { /* 클래스가 list인 요소의 li 자식 요소 */
+        display: inline-block; /* 화면 표시 방식: inline(줄바꿈 없음) + block(크기 설정) */
+        width: 56px; /* 가로 길이 */
+    }
+    
+    .list > li > a {
+        color: white;
+        text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+    }
+    
+    #right {
+        float: right; /* 항상 브라우저 오른쪽 끝에 위치 */
+    }
+</style>
+
+</head>
+<body>
+
+    <h1>CSS List</h1>
+    
+    <ul class="list"> <!-- unordered list -->
+        <li> <!-- list item -->
+            <a href="https://www.google.com">구글</a>
+        </li>
+        <li> <!-- list item -->
+            <a href="https://www.naver.com">네이버</a>
+        </li>
+        <li> <!-- list item -->
+            <a href="https://www.daum.net">다음</a>
+        </li>
+        <li id="right"> <!-- list item -->
+            <a href="https://www.facebook.com">페북</a>
+        </li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<style>
+    div#panel {
+        height: 200px;
+        background-color: lightgray;
+        margin: 16px;
+        padding: auto;
+    }
+    div#test {
+        border: 1px solid gray;
+        margin: 8px;
+        padding: 8px;
+    }
+    img#bulb {
+        border: 1px solid gray;
+    }
+    
+</style>
+</head>
+<body>
+    
+    <h1>jQuery 사용하기</h1>
+    
+    <button id="btn-hide">Hide</button>
+    <button id="btn-show">Show</button>
+    <button id="btn-toggle">Hide/Show Toggle</button>
+    <br/>
+    <button id="btn-fade-out">Fade Out</button>
+    <button id="btn-fade-in">Fade In</button>
+    <button id="btn-fade-toggle">Fade Toggle</button>
+    <br/>
+    <button id="btn-slide-up">Slide Up</button>
+    <button id="btn-slide-down">Slide Down</button>
+    <button id="btn-slide-toggle">Slide Toggle</button>
+    <br/>
+    
+    <div id="panel">테스트</div>
+    
+    <hr/>
+    
+    <h1>jQuery 컨텐트(html), 속성(attribute), 스타일(style property)</h1>
+    
+    <div id="test">Hello, <strong>jQuery</strong>!</div>
+    
+    <div>
+        <img id="bulb" alt="bulb" src="images/bulb_off.gif" />
+    </div>
+    
+    <!--  
+      jQuery: JavaScript를 (편리하게) 사용하기 위한 라이브러리.
+        (1) jQuery 라이브러리를 배포하는 CDN(Content Delivery Network)의 URL을 주소를 링크.
+        (2) jQuery 링크를 설정한 <script> 태그 아래에 
+        jQuery를 사용하는 코드는 별도의 <script> 태그 안에서 작성.
+    -->
+
+    <!-- (1) jQuery CDN 설정 -->
+    <script 
+        src="https://code.jquery.com/jquery-3.6.1.min.js" 
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+        crossorigin="anonymous"></script>
+    <!-- (2) jQuery를 이용하는 자바스크립트 코드 -->
+    <script>
+    /* jQuery 기본 문법:
+       $(selector).action(param, ...);
+        - $(selector): HTML 요소를 찾는 방법.
+        - $('#id'): document.querySelector()와 동일 -> element를 리턴.
+        - $('id 이외의 selector'): document.querySelectorAll()과 동일 -> element들의 배열을 리턴.
+    */
+    
+    const panel = $('div#panel'); // document.querySelector('div#panel')
+    
+    // id='btn-hide'인 버튼에 'click' 이벤트 리스너를 등록.
+    // document.querySelector('#btn-hide').addEventListener('click', function() {});
+    $('#btn-hide').click(function() {
+    	panel.hide(2000); // 애니메이션 시간. 단위 ms. 1000ms = 1s.
+    });
+    
+    // id='btn-show'인 버튼에 'click' 이벤트 리스너를 등록.
+    $('#btn-show').click(function() {
+    	panel.show(2000);
+    });
+    
+    // id='btn-toggle'인 버튼에 'click' 이벤트 리스너를 등록.
+    $('#btn-toggle').click(function() {
+    	panel.toggle(2000);
+    });
+    
+    $('#btn-fade-out').click(function() {
+    	panel.fadeOut('fast');
+    });
+    
+    $('#btn-fade-in').click(function() {
+    	panel.fadeIn('fast');
+    });
+    
+    $('#btn-fade-toggle').click(function() {
+    	panel.fadeToggle('slow');
+    });
+    
+    $('#btn-slide-up').click(function() {
+    	panel.slideUp(2000);
+    });
+    
+    $('#btn-slide-down').click(function() {
+    	panel.slideDown(2000);
+    });
+    
+    $('#btn-slide-toggle').click(function() {
+    	panel.slideToggle(2000);
+    });
+    
+    // div 중에서 id 속성값이 test인 요소에 click 이벤트 리스너를 등록.
+    $('div#test').click(function() {
+    	// 이벤트 리스너(콜백 함수) 안에서 $(this)의 의미: 이벤트가 발생한 HTML 요소.
+    	console.log($(this).html()); // JavaScript의 innerHTML
+    	console.log($(this).text()); // JavaScript의 innerText
+    	console.log($(this).attr('id')); // HTML 태그의 id 속성 값.
+    	console.log($(this).css('color')); // HTML 요소의 style 속성의 color 프로퍼티 값.
+    
+        // HTML 요소의 컨텐트, 속성, 스타일 변경
+        $(this).html('<strong>안녕</strong>하세요, <em>자바스크립트</em>....');
+    	$(this).css('color', 'red');
+    	$(this).attr('id', 'test2');
+    });
+    
+    // bulb 이미지 위에 마우스가 올라가면 이미지와 테두리선 스타일을 변경.
+    $('img#bulb').mouseenter(function() {
+    	// $(this) == $('img#bulb')
+    	$(this).attr('src', 'images/bulb_on.gif');
+    	$(this).css('border', '1px solid red');
+    });
+    
+    // bulb 이미지 바깥으로 마우스가 나가면 이미지와 테두리선 스타일을 변경.
+    $('img#bulb').mouseleave(function() {
+    	$(this).attr('src', 'images/bulb_off.gif');
+    	$(this).css('border', '1px solid gray');
+    });
+    
+    </script>
+</body>
+</html>

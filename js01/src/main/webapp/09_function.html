@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript 함수(function)</h1>
+    
+    <script>
+    let x;
+    console.log(x); // 변수가 선언은 되어 있는데, 값이 초기화되지 않은 경우: undefined.
+    
+    /* JavaScript에서 함수 선언(정의)하는 방법:
+    	function 함수이름(파라미터, ...) {
+    	    실행 코드;
+    	    [return [값];]
+        }
+    
+        o. 리턴 타입을 선언하지 않음.
+        o. 파라미터 선언에서 키워드(var, let, const)를 사용하지 않음.
+    */
+    
+    // 함수 선언(정의). parameter - argument를 저장하기 위해서 함수 선언부에서 선언하는 지역 변수.
+    function add(x, y) {
+        return x + y;
+    }
+        
+    let result = add(1, 2); // 함수 호출. argument - 함수를 호출할 때 전달하는 값(들).
+    console.log(result);
+    
+    // 자바스크립트의 함수는 argument의 타입을 검사하지 않음.
+    result = add('안녕하세요', 'JavaScript');
+    console.log(result);
+    
+    // 자바스크립의 함수를 호출할 때, 함수 정의에서 선언된 파라미터 개수를 지킬 필요는 없음.
+    result = add();
+    console.log(result); //-> NaN: Not a Number
+    
+    result = add(1, 3, 5, 7, 9);
+    console.log(result);
+    
+    // 자바스크립트의 모든 함수는 arguments 이름의 프로퍼티를 가지고 있음.
+    // arguments: 함수를 호출한 곳에서 전달한 모든 argument들을 저장하고 있는 객체.
+    function test() {
+    	console.log('test() arguments:');
+    	for (let x of arguments) {
+    		console.log(x);
+    	}
+    }
+    
+    test(1, 'abc', 2, '홍길동');
+    
+    // 자바스크립트의 함수는 객체(object)!
+    //  (1) 함수는 프로퍼티(property - 자바의 필드)를 갖음. (예) arguments
+    //  (2) 함수는 변수에 저장할 수 있음.
+    //  (3) 함수의 argument로 다른 함수를 전달할 수 있음.
+    //  (4) 함수 내부에서 내부 함수를 정의(선언)할 수 있음.
+    //      내부 함수는 함수가 정의된 외부 함수 안에서만 사용할 수 있음.
+    //      지역 변수 - 함수 내부에서 선언된 변수. 변수가 선언된 블록 안에서만 사용 가능.
+    
+    function multiply(x, y) {
+    	return x * y;
+    }
+    
+    const m1 = multiply(); // 함수 multiply의 리턴값(호출 결과)을 변수 m1에 저장.
+    console.log(m1);
+    
+    const m2 = multiply; // 함수 multiply 객체를 변수 m2에 저장.
+    console.log(m2); // 변수 m2: 함수 객체 
+    console.log(m2(3, 4)); // m2라는 이름으로 함수 호출이 가능.
+    
+    function calculate(x, y, operator) {
+    	return operator(x, y);
+    }
+    
+    result = calculate(1, 2, add);
+    console.log(result);
+    
+    // 익명 함수: 이름이 없는 함수.
+    result = calculate(1, 2, function(x, y) { return x - y; });
+    console.log(result);
+    
+    // lambda 표현식: 익명 함수를 간단히 표현.
+    // (파라미터, ...) => { 실행코드; }
+    // (파라미터, ...) => 리턴값
+    result = calculate(1, 2, (x, y) => x / y);
+    console.log(result);
+    
+    function addOne() {
+    	let count = 0;
+    	
+    	// 내부 함수
+    	function plus() {
+    		count++; // 내부 함수는 외부 함수에서 선언된 변수들을 사용할 수 있음.
+    	}
+    	plus(); // 내부 함수 호출
+    	
+    	return count;
+    }
+    
+    //plus(); -> 내부 함수를 외부 함수 바깥에서 사용할 수는 없음.
+    result = addOne();
+    console.log(result);
+    
+    </script>
+</body>
+</html>

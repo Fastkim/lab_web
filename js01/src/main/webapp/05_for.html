@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+
+    <h1>JavaScript for</h1>
+    <div id="result"></div>
+    
+    <script>
+    const result = document.getElementById('result'); // <div> element를 찾음.
+    let text = ''; // 구구단 2단의 내용을 작성할 문자열
+    for (let n = 1; n < 10; n++) {
+    	//text += '2 x ' + n + ' = ' + (2 * n) + '<br/>';
+    	text += `2 x ${n} = ${2 * n} <br/>`;
+    }
+    result.innerHTML = text;
+    
+    result.innerHTML += '<hr/>'; // horizontal ruler
+    
+    // 구구단 2단부터 9단까지 이어서 출력
+    text = '';
+    for (let dan = 2; dan < 10; dan++) {
+    	for (let n = 1; n < 10; n++) {
+    		text += `${dan} x ${n} = ${dan * n} <br/>`;
+    	}
+    	text += '--------------- <br/>';
+    }
+    result.innerHTML += text;
+    result.innerHTML += '<hr/>';
+    
+    // 구구단을 2단은 2x2까지, 3단은 3x3까지, ..., 9단은 9x9까지 출력.
+    text = '';
+    for (let dan = 2; dan < 10; dan++) {
+    	for (let n = 1; n < 10; n++) {
+    		text += `${dan} x ${n} = ${dan * n} <br/>`;
+    		if (n == dan) {
+    			break; // 안쪽 for 루프를 멈춤.
+    		}
+    	}
+    	text += '--------------- <br/>'
+    }
+    result.innerHTML += text;
+    
+    </script>
+
+</body>
+</html>

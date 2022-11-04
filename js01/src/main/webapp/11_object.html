@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+
+    <h1>JavaScript 객체(object)</h1>
+    
+    <script>
+    // JSON: JavaScript Object Notation. 자바스크립트에서 객체를 표기(표현)하는 방법.
+    // {property1: value1, property2: value2, ...}
+    
+    const ohSsam = {
+    		name: '오쌤',
+    		age: 16,
+    		phones: ['010-0000-0000', '02-0000-0000'],
+    };
+    console.log(ohSsam);
+    
+    // 객체의 property 접근(사용) 방법 1: 참조 연산자(.)
+    console.log(ohSsam.name);
+    
+    // 객체의 property 접근(사용) 방법 2: 인덱스 연산자([])
+    console.log(ohSsam['age']); // ohSsam.age
+    
+    // 객체는 for-in 구문을 사용할 수 있음. 객체의 프로퍼티 이름들을 iteration함.
+    // (주의) 객체는 for-of 구문을 사용할 수 없음!
+    for (let key in ohSsam) {
+    	console.log(ohSsam[key]); 
+    }
+    
+    // 자바스크립트의 객체는 생성된 후에도 언제든지 property(들)을 추가할 수 있음.
+    const student1 = {}; // 빈 객체.
+    console.log(student1);
+    
+    student1.name = '홍길동';
+    student1.stuNo = 123456;
+    console.log(student1);
+    
+    const student2 = {};
+    student2.stuName = 'Scott';
+    student2.stuAge = 12;
+    console.log(student2);
+    
+    // 생성자 함수(constructor)를 사용한 객체 생성.
+    // 1. 생성자 함수를 선언(정의)
+    function Student(stuNo, stuName, stuDept) {
+    	this.stuNo = stuNo;
+    	this.stuName = stuName;
+    	this.stuDept = stuDept;
+    }
+    // 2. 생성자를 호출해서 객체 생성
+    const student3 = new Student(1, '홍길동', '국문과');
+    const student4 = new Student(2, 'Scott', '영문과');
+    console.log(student3);
+    console.log(student4);
+    
+    // 메서드(method): 객체에서 선언(정의)한 함수.
+    const businessPerson = {
+    		name: 'King',
+    		company: 'Oracle',
+    		salary: 5000,
+    		// 메서드
+    		raiseSalary: function(ratio) {
+    			return this.salary * (1 + ratio);
+    		}
+    };
+    console.log(businessPerson);
+    console.log(businessPerson.raiseSalary(0.1));
+    
+    // 생성자 함수
+    function BusinessPerson(name, company, salary) {
+    	this.name = name;
+    	this.company = company;
+    	this.salary = salary;
+    	// 메서드
+    	this.raiseSalary = function(ratio) {
+    		return this.salary * (1 + ratio);
+    	};
+    }
+    const scott = new BusinessPerson('Scott', '아이티윌', 3000);
+    console.log(scott);
+    console.log(scott.raiseSalary(1));
+    
+    </script>
+
+</body>
+</html>

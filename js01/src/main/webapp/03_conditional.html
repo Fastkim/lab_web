@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+    #result {
+        border: 1px solid gray;
+        margin: 8px;
+        padding: 8px;
+    }
+    
+</style>
+</head>
+<body>
+
+    <h1>JavaScript 조건문</h1>
+    
+    <input type="number" id="numberInput" placeholder="정수 입력" />
+    <button onclick="checkPositive()">양수? 음수?</button>
+    <button onclick="checkEvenOrOdd()">짝수? 홀수?</button>
+    <button onclick="checkEvenOrOdd2()">삼항 연산자</button>
+    
+    <div id="result">결과</div>
+
+    <script>
+    // JavaScript inline comment(주석)
+    /* JavaScript block comment */
+    
+    // JavaScript 변수 선언 방법: 
+    // JavaScript는 변수를 선언할 때 변수의 데이터 타입을 지정하지 않음!
+    // let 변수이름 = 값; --> 값을 변경할 수 있는 변수. 변수가 선언된 블록({}) 내부에서만 사용 가능.
+    // const 변수이름 = 값; --> 값을 변경할 수 없는 변수(상수). 블록 내부에서만 사용 가능.
+    // var 변수이름 = 값; --> 값을 변경할 수 있는 변수. 스크립트 전체에서 사용 가능.
+    
+    let x = 1; // 변수 x에 "정수" 1을 저장.
+    console.log('x =', x, typeof x);
+    
+    x = 'Hello'; // 변수 x의 값을 "문자열" Hello으로 변경.
+    //-> JavaScript에서는 변수의 타입이 그 문장이 실행될 때 결정됨.(dynamic typing)
+    // (비교) Java는 변수의 타입이 컴파일 시점에 결정됨. (static typing)
+    // JavaScript에서는 문자열을 표현할 때 작은따옴표('')와 큰따옴표("") 모두 사용 가능.
+    // Java에서는 문자(char)를 표현할 때는 작은따옴표, 문자열을 표현할 때는 큰따옴표를 사용.
+    console.log('x =', x, typeof x);
+    
+    const y = 1; // 변경할 수 없는 상수 변수.
+    // y = 2; -> 실행 시점에서 에러가 발생.
+    
+    // id="numberInput"인 element를 찾음 -> 숫자 값을 읽음.
+    const numberInput = document.getElementById('numberInput'); // <input> element
+    //console.log(numberInput);
+    
+    // id="result"인 element를 찾음 -> 결과를 출력.
+    const result = document.getElementById('result'); // <div> element
+    
+    function checkPositive() {
+    	const number = numberInput.value; // input에 입력된 값(value)
+    	if (number > 0) {
+    		result.innerHTML = number + ' = 양수';
+    	} else if (number == 0) {
+    		result.innerHTML = number;
+    	} else {
+    		result.innerHTML = number + ' = 음수'; 
+    	}
+    	numberInput.value = ''; // input의 값을 지움.
+    }
+    
+    function checkEvenOrOdd() {
+    	const number = numberInput.value;
+    	if (number % 2) { // if (number % 2 == 1)
+    		result.innerHTML = number + ' = 홀수';
+    	} else {
+    		result.innerHTML = number + ' = 짝수';
+    	}
+    	/* JavaScript에서 참(true)/거짓(false):
+    		1. 숫자인 경우 - 0은 false, 0 이외의 숫자들은 true.
+    	    2. 문자열인 경우 - 빈 문자열('')은 false, 1글자 이상인 문자열은 true.
+    	    3. 객체인 경우 - null은 false, null이 아니면 true.
+    	*/
+    	
+    	numberInput.value = '';
+    }
+    
+    function checkEvenOrOdd2() {
+    	const number = numberInput.value;
+    	// 삼항 연산자
+    	// (조건식) ? 값1 : 값2
+    	result.innerHTML = (number % 2) ? '홀수' : '짝수';
+    }
+    
+    </script>
+</body>
+</html>

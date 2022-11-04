@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+
+<style>
+    #link-naver {
+        color: black; /* 글자색 */
+        text-decoration: none; /* 밑줄 제거 */
+    }
+    
+    #link-naver:hover { /* 마우스가 #link-naver 요소 위에 있으면 */
+        color: blue;
+        text-decoration: underline;
+    }
+    
+    #link-naver:active { /* #link-naver 요소를 마우스로 클릭하고 있을 때 */
+        color: red;
+    }
+    
+    #btn-daum {
+        border-radius: 4px;
+        text-decoration: none;
+        background-color: dodgerblue;
+        color: white;
+        padding: 4px 8px; /* padding-top/bottom padding-right/left */
+        display: inline-block; /* 크기(width, height)를 설정하기 위해서 */
+        width: 40px;
+        text-align: center; /* 글자 가운데 정렬 */
+    }
+    
+    #btn-daum:hover {
+        background-color: slateblue;
+    }
+</style>
+
+</head>
+<body>
+
+    <h1>Pseudo selector</h1>
+    <!--  
+      pseudo selector(가상 선택자): 이벤트 또는 특정 조건을 만족하는 요소들을 찾을 때 사용.
+      (문법) selector:이벤트(조건)
+      pseudo selector 종류:
+        - visited: 방문했던 사이트
+        - link: 방문하지 않았던 사이트
+        - hover: 마우스가 요소 위에 있을 때
+        - active: 마우스를 클릭하고 있을 때
+        - nth-child(): n번째 자식 요소
+        ...
+    -->
+    <a id="link-naver" href="https://www.naver.com">네이버</a>
+
+    <h1>Link button</h1>
+    <a id="btn-daum" href="https://www.daum.net">다음</a>
+
+</body>
+</html>

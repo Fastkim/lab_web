@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- POM(Project Object Model): 프로젝트 정보, 빌드, (라이브러리) 의존성 설정하는 파일. -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>edu.web</groupId>
+    <artifactId>jsp01</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>JSP01</name>
+    <description>Servelt/JSP Example</description>
+
+    <!-- 라이브러리 의존성 추가 -->
+    <dependencies>
+        <!-- JavaEE 라이브러리(Servlet/JSP 사용하기 위한 라이브러리) -->
+        <!-- Servlet/JSP, JSP 표준 액션 태그, EL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        
+        <!-- JSTL -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

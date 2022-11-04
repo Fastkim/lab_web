@@ -1,0 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<footer class="footer">
+    <h2>(주)아이티윌</h2>
+    <h3>http://www.itwill.co.kr</h3>
+</footer>

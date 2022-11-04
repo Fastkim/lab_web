@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+    div {
+        border: 1px solid gray;
+        margin: 8px;
+        padding: 8px;
+    }
+</style>
+</head>
+<body>
+
+    <h1>JavaScript switch</h1>
+    
+    <!-- drop-down list -->
+    <select id="weekday">
+        <option value="sun">일요일</option>
+        <option value="mon">월요일</option>
+        <option value="tue">화요일</option>
+        <option value="wed">수요일</option>
+        <option value="thu">목요일</option>
+        <option value="fri">금요일</option>
+        <option value="sat">토요일</option>
+    </select>
+    <button onclick="check()">확인</button>
+    <div id="result">결과 출력</div>
+
+    <script>
+    // <select> element를 찾음.
+    const weekday = document.getElementById('weekday');
+    
+    // <div> element를 찾음.
+    const result = document.getElementById('result');
+    
+    // button의 onclick 속성에서 호출되는 함수를 정의.
+    function check() {
+    	const day = weekday.value;
+    	switch (day) {
+    	case 'mon':
+    	case 'tue':
+    	case 'wed':
+    	case 'thu':
+    	case 'fri':
+    		result.innerHTML = '강의가 있는 날';
+    		break;
+    	case 'sat':
+    	case 'sun':
+    		result.innerHTML = '자유...';
+    		break;
+    	default:
+    	}
+    }
+    
+    </script>
+
+</body>
+</html>

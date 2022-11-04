@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+    .main-panel {
+        font-size: 200%; /* 부모 요소의 기본 폰트 크기의 200% */
+        background-color: dodgerblue;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+    .sub-panel {
+        font-size: 50%;
+        font-weight: normal;
+        background-color: white;
+        color: black;
+        text-align: left;
+        border: 1px solid gray;
+        display: none;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+    li {
+        display: inline-block;
+        width: 100px;
+    }
+    
+</style>
+</head>
+<body>
+
+    <h1>JavaScript element 찾기</h1>
+    <button id="btn-hide">Hide</button>
+    <button id="btn-show">Show</button>
+    <button id="disp-none">Display None</button>
+    <button id="disp-block">Display Block</button>
+    
+    <hr/>
+    
+    <div class="main-panel">Click!
+        <div class="sub-panel">
+            <ul>
+                <li>인스타그램</li>
+                <li>페이스북</li>
+                <li>트위터</li>
+                <li>유튜브</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+    const h1 = document.querySelector('h1'); // 태그 이름으로 찾기
+    
+    const btnHide = document.querySelector('#btn-hide'); // id 속성값으로 찾기
+    btnHide.addEventListener('click', function() {
+    	h1.style.visibility = 'hidden';
+    });
+    
+    const btnShow = document.querySelector('#btn-show');
+    btnShow.addEventListener('click', function() {
+    	h1.style.visibility = 'visible';
+    });
+    
+    const btnDispNone = document.querySelector('#disp-none');
+    btnDispNone.addEventListener('click', function() {
+    	h1.style.display = 'none';
+    });
+    
+    const btnDispBlock = document.querySelector('#disp-block');
+    btnDispBlock.addEventListener('click', function() {
+    	h1.style.display = 'block';
+    });
+    
+    const mainPanel = document.querySelector('div.main-panel');
+    mainPanel.addEventListener('click', function() {
+    	const subPanel = document.querySelector('div.sub-panel');
+    	let display = subPanel.style.display; // display 속성의 값 - 문자열
+    	if (display == 'none' || display == '') {
+    		subPanel.style.display = 'block'; // display 속성 값을 변경
+    		//dispaly = 'block'; // 문자열을 저장하는 변수의 값을 다른 문자열로 변경.
+    	} else {
+    		subPanel.style.display = 'none';
+    	}
+    });
+    
+    </script>
+</body>
+</html>
