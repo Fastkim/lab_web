@@ -31,7 +31,6 @@
             <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -46,15 +45,14 @@
             <version>21.7.0.0</version>
         </dependency>
 
-        <!-- HikariCP (Connection pool): DBCP DataSource를 사용하기 위해서 -->
+        <!-- HikariCP (Connection Pool): DBCP DataSource를 사용하기 위해서 -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>5.0.1</version>
         </dependency>
-
+        
         <!-- Log4j2 logging -->
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -74,6 +72,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.36</version>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

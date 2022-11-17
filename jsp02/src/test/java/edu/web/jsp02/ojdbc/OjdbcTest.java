@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -30,16 +31,17 @@ public class OjdbcTest {
             + "values (?, ?, ?, sysdate, sysdate)";
     
     // JUnit test: JUnit 모듈에서 테스트를 하기 위해서 호출하는 메서드.
-    //  (1) 가시성: public (2) 리턴 타입: void, (2) 파라미터를 갖지 않음.
+    //   (1) 가시성: public. (2) 리턴 타입: void. (3) 파라미터를 갖지 않음.
     @Test
+    @Order(2)
     public void testSelect() throws SQLException {
-        // 1. 드라이버(라이브러리) 관리자에 OJDBC 라이브러리를 로딩.
+        // 1. 드라이버(라이브러리) 관리자에 OJDBC 라이브러리를 등록.
         DriverManager.registerDriver(new OracleDriver());
         
         // 2. 등록된 JDBC 라이브러리를 사용해서 Oracle 데이터베이스와 연결
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
         Assertions.assertNotNull(conn);
-        // -> conn이 null이 아니면 단위 테스트 성공, null이면 실패.
+        //-> conn이 null이 아니면 단위 테스트 성공, null이면 실패.
         
         // 3. Statement 준비
         PreparedStatement stmt = conn.prepareStatement(SQL_SELECT);
@@ -57,11 +59,10 @@ public class OjdbcTest {
             LocalDateTime createdTime = rs.getTimestamp("CREATED_TIME").toLocalDateTime();
             LocalDateTime modifiedTime = rs.getTimestamp("MODIFIED_TIME").toLocalDateTime();
             
-            String row = String.format("%d | %s | %s | %s | %s | %s",
+            String row = String.format("%d | %s | %s | %s | %s | %s", 
                     id, title, content, author, createdTime, modifiedTime);
             System.out.println(row);
         }
-        
         
         // 사용했던 리소스 해제 - 생성된 순서의 반대로 close() 호출.
         rs.close();
@@ -70,8 +71,9 @@ public class OjdbcTest {
     }
     
     @Test
-    public void testInsert() throws SQLException {
-        // 1. OJDBC 라이브러리 등록.
+    @Order(1) // 테스트 메서드 호출 순서 지정.
+    public void testInset() throws SQLException {
+        // 1. OJDBDC 라이브러리 등록.
         DriverManager.registerDriver(new OracleDriver());
         
         // 2. 데이터베이스와 연결.
@@ -79,21 +81,19 @@ public class OjdbcTest {
         
         // 3. SQL 문장 준비
         PreparedStatement stmt = conn.prepareStatement(SQL_INSERT);
-        // PreparedStatment의 파라미터(?)을 세팅.
-        stmt.setString(1, "JUnit Test"); // 글 제목
+        // PreparedStatment의 파라미터들(?)을 세팅.
+        stmt.setString(1, "JUunit Test"); // 글 제목
         stmt.setString(2, "단위 테스트를 사용한 INSERT 테스트"); // 글 내용
         stmt.setString(3, "guest"); // 작성자
         
         // 4. SQL 문장 실행 & 결과 처리
-        int result = stmt.executeUpdate(); 
-        // return 값은 int타입인데 이 의미는 몇개의 행이 업데이트되었느냐는 뜻
-        Assertions.assertEquals(1, result); 
-        // int expected(1) =>성공이라고 기대하는 값, int actual(result) => 실제 실행되는 값
-        // 즉 -> result 값이 1이면 단위 테스트 성공, 그렇지 않으면 단위 테스트 실패.
+        int result = stmt.executeUpdate();
+        Assertions.assertEquals(1, result);
+        //-> result 값이 1이면 단위 테스트 성공, 그렇지 않으면 단위 테스트 실패.
         
         // 5. 사용했던 리소스들 해제
         stmt.close();
         conn.close();
     }
-    
+
 }

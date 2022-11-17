@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="out" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" 
+                pattern="%d{HH:mm:ss.SSS} %-5level [%-20logger] : %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- org.springframework 패키지와 그 하위의 모든 패키지에서 Log4j 기능 사용 -->
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="out" />
+        </Logger>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="out" />
+        </Root>
+    </Loggers>
+</Configuration>
