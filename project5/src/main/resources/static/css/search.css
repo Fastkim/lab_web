@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/* 지역축제, 추천여행지 [목록형(기본)] */
+.mediaWrap {margin:0;border-top:1px solid #5e6b83;border-bottom:1px solid #5e6b83;}
+.mediaWrap > li {position:relative;width:100%;overflow:hidden;padding:40px 0;box-sizing:border-box;}
+.mediaWrap > li + li {border-top:1px solid #d4d4d4;}
+.mediaWrap > li .go{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;display:block;background:transparent; -moz-background:transparent;}
+.mediaWrap > li .go span {position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:polygon(0 0, 0 0, 0 0);}
+.mediaWrap > li .go:focus {border:1px dotted #ccc}
+.mediaWrap .img, .mediaWrap .text {position:relative;display:inline-block;vertical-align:top;line-height:25px;}
+.mediaWrap .img {float:left;display:block;width:29.67%;max-width:328px;height:auto;padding-left:28px;box-sizing:border-box;-webkit-box-sizing:border-box;overflow:hidden;}
+.mediaWrap .img img {display:block;width:100%;max-width:300px;height:100%;max-height:180px;border:1px solid #bcbcbc;vertical-align:top;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.mediaWrap .text {float:right;width:70.33%;max-width:872px;padding-left:25px;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.mediaWrap .text .title {padding-bottom:20px;color:#222;font-size:22px;font-weight:500;line-height:1.5em;letter-spacing:-1px;}
+.mediaWrap .text .title .date {padding:0 0 0 10px;color:#555;font-weight:normal;letter-spacing:0;}
+.mediaWrap .text .ny {display:-webkit-box;width:100%;height:50px;line-height:25px;letter-spacing:-0.8px;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2;}
+.mediaWrap .text .ny.line {height:auto;}
+.mediaWrap .text .sub_text {line-height:25px; display:-webkit-box;width:100%;height:80px;line-height:25px;letter-spacing:-0.8px;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:3;} /* 사진뉴스 */
+.mediaWrap .text .detail_info {padding-top:25px;}
+.mediaWrap .text .detail_info li {position:relative;width:100%;padding-left:12px;letter-spacing:-0.8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box;}
+.mediaWrap .text .detail_info li:before {content:"";position:absolute;top:50%;left:0;display:block;width:4px;height:4px;margin-top:-2px;background:#726c6c;}
+.mediaWrap .text .detail_info li:not(:last-child) {margin-bottom:10px;}
+.culture_view_img {padding:30px;text-align:center;border-top:1px solid #d4d4d4}
+.culture_view_img img {max-width:100%;}
+.sortList li {float:left;padding:0 0 0 10px;} /* 필터 */
+.sortList li:before {content:"";display:inline-block;margin-right:10px;width:1px;height:12px;background:#c3c3c3;}
+.sortList li:first-child {padding:0;}
+.sortList li:first-child:before {display:none;}
+
+@media all and (max-width:1200px) {
+    .mediaWrap .img img {height:auto;}
+}
+
+@media all and (max-width:768px) {
+    .mediaWrap > li {padding:30px 0 25px;}
+    .mediaWrap .img {padding-left:18px;}
+    .mediaWrap .img img {max-width:100%;max-height:100%;}
+    .mediaWrap .text .title {padding-bottom:10px;font-size:18px;}
+    .mediaWrap .text .ny {height:45px;line-height:21px;}
+    .mediaWrap .text .sub_text {line-height:inherit; height:45px; -webkit-line-clamp:2;}
+    .mediaWrap .text .detail_info {padding-top:15px;}
+    .mediaWrap .text .detail_info li:not(:last-child) {margin-bottom:0;}
+    .mediaWrap .img, .mediaWrap .text {line-height:22px;}
+}
+
+@media all and (max-width:480px) {
+    .mediaWrap > li {padding:24px 0;}
+    .mediaWrap .img {width:35%;max-height:90px;padding-left:0;}
+    .mediaWrap .img img {padding-left:0;}
+    .mediaWrap .text {display:-webkit-box;width:65%;height:72px;padding-left:20px;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+    .mediaWrap .text .title {font-size:15px;}
+    .mediaWrap .text .title .date {padding:0;}
+    .mediaWrap .text .sub_text {display:none}
+    .mediaWrap .text .ny {display:none}
+    .mediaWrap .text .detail_info {padding-top:0px;}
+    .sortList li {padding:0 0 0 5px;font-size:13px;letter-spacing:-1px;}
+    .sortList li:before {margin-right:5px;}
+}

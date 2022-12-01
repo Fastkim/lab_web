@@ -26,7 +26,7 @@ public class HomeController {
         List<Community> list = communityService.read(); // DB에서 포스트 목록 전체 검색.
         model.addAttribute("list", list);
         
-        return "/community/festivalList";
+        return "/community/festivalPost";
     }
     
 }
