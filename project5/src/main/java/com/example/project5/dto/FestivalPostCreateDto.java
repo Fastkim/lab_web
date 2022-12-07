@@ -13,11 +13,12 @@ public class FestivalPostCreateDto {
     private String title;
     private String content;
     private String author;
+    private String imgFilePath;
    
 
     public FestivalPost toEntity() {
         return FestivalPost.builder()
-                .title(title).content(content).author(author)
+                .title(title).content(content).author(author).imgFilePath(imgFilePath)
                 .build();
     }
 

@@ -33,7 +33,7 @@ public class FestivalPostController {
         // src/main/resources/templates/post/create.html
     }
     
-    @PostMapping("/festivalpostcreate")
+    @PostMapping("/festivalPostCreate")
     public String create(FestivalPostCreateDto dto, RedirectAttributes attrs) {
         log.info("create(dto={})", dto);
         
@@ -45,17 +45,17 @@ public class FestivalPostController {
         return "redirect:/";
     }
     
-    @GetMapping({"/festivalpostdetail", "/festivalpostmodify" })
+    @GetMapping({"/festivalPostDetail", "/festivalPostModify" })
     // 컨트롤러 메서드가 2개 이상의 요청 주소를 처리할 때는 mapping에서 요청 주소를 배열로 설정.
     public void detail(Integer id, Model model) {
         log.info("detail(id={})", id);  
         
         // 요청 파라미터 id를 번호로 갖는 포스트 내용을 검색 -> 뷰에 전달.
         FestivalPost festivalPost = festivalPostService.read(id);
-        model.addAttribute("festivalpost", festivalPost);
+        model.addAttribute("festivalPost", festivalPost);
     }
     
-    @PostMapping("/festivalpostdelete")
+    @PostMapping("/festivalPostDelete")
     public String delete(Integer id, RedirectAttributes attrs) {
         log.info("delete(id={})", id);
         
@@ -66,24 +66,24 @@ public class FestivalPostController {
         return "redirect:/";
     }
     
-    @PostMapping("/festivalpostupdate")
+    @PostMapping("/festivalPostUpdate")
     public String update(FestivalPostUpdateDto dto) {
         log.info("update(dto={})", dto);
         
         Integer postId = festivalPostService.update(dto);
         
         // 포스트 수정 성공 후에는 상세 페이지로 이동(redirect)
-        return "redirect:/community/festivalpostdetail?id=" + dto.getId();
+        return "redirect:/community/festivalPostDetail?id=" + dto.getId();
     }
     
-    @GetMapping("/festivalpostsearch")
+    @GetMapping("/festivalPostSearch")
     public String search(String type, String keyword, Model model) {
         log.info("search(type={}, keyword={})", type, keyword);
 
         List<FestivalPost> list = festivalPostService.search(type, keyword);
         model.addAttribute("list", list);
 
-        return "/community/festivalpostlist"; // list.html 파일
+        return "/community/festivalPostList"; // list.html 파일
 
     }
 }

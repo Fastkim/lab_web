@@ -13,21 +13,21 @@
                     <div class="my-2">
                         <label for="id" class="form-label">포스트 번호</label>
                         <input id="id" class="form-control" 
-                            name="id" th:value="${ festivalpost.id }" readonly />
+                            name="id" th:value="${ festivalPost.id }" readonly />
                     </div>
                     <div class="my-2">
                         <label for="title" class="form-label">포스트 제목</label>
                         <input id="title" class="form-control" 
-                            name="title" th:value="${ festivalpost.title }" autofocus />
+                            name="title" th:value="${ festivalPost.title }" autofocus />
                     </div>
                     <div class="my-2">
                         <label for="content" class="form-label">포스트 내용</label>
                         <textarea id="content" class="form-control" 
-                            name="content" th:text="${ festivalpost.content }"></textarea>
+                            name="content" th:text="${ festivalPost.content }"></textarea>
                     </div>
                     <div class="my-2">
                         <label for="author" class="form-label">작성자</label>
-                        <input id="author" class="form-control" th:value="${ festivalpost.author }" readonly />
+                        <input id="author" class="form-control" th:value="${ festivalPost.author }" readonly />
                     </div>
                 </form>
                 <div class="my-2">
@@ -47,7 +47,7 @@
     btnDelete.addEventListener('click', function () {
     	const result = confirm('정말 삭제?');
     	if (result) {
-    		formModify.action = '/community/festivalpostdelete';
+    		formModify.action = '/community/festivalPostDelete';
     		formModify.method = 'post';
     		formModify.submit();
     	}
@@ -65,7 +65,7 @@
     	
     	const result = confirm('수정 완료?');
     	if (result) {
-    		formModify.action = '/community/festivalpostupdate';
+    		formModify.action = '/community/festivalPostUpdate';
     		formModify.method = 'post';
     		formModify.submit();
     	}
