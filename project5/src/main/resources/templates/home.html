@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{ layout/basic-layout }">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{ layout/layout }">
     
-    <!--*/ layout/basic-layout.html 파일의 "content" 레이아웃 프래그먼트를 채워줄 내용  */-->
-    <div layout:fragment="content">
-        <div>
-            <h1>[[ ${ msg } ]]</h1>
-        </div>
+<div layout:fragment="content">
+    <div class="my-2">
+        <div class="card-header">
+            <h1>게시판 목록 페이지</h1>
+        </div> 
+        
+        <ul>
+            <li><a th:href="@{ /post/list }">모집 게시판</a></li>
+        </ul>
+        
+        <ul>
+            <li><a th:href="@{ /freeshare/list }">무료 나눔 게시판</a></li>
+        </ul>
+        
+        <ul>
+            <li><a th:href="@{ /community/festivalPostList }">지역 행사 게시판</a></li>
+        </ul>
+        <ul>
+            <li><a th:href="@{ /map/main}">모임 지도</a></li>
+        </ul>
     </div>
-    
-    <script layout:fragment="script" th:inline="javascript">
-    console.log('Thymeleaf 레이아웃 기능');
-    </script>
+
+</div>
     
 </html>

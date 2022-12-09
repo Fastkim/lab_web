@@ -11,11 +11,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 @Getter
 @ToString
 @Entity(name = "COMMUNITYS")
@@ -37,15 +39,51 @@ public class FestivalPost extends BaseTimeEntity {
     @Column(nullable = false)
     private String author;
     
+    @Column(nullable = false)
+    private String festivalArea;
+    
+    @Column(nullable = false)
+    private String festivalPeriod;
+    
+    @Column(nullable = false)
+    private String festivalCharacter;
+    
+    @Column(nullable = false)
+    private String festivalInfo;
+    
+    @Column(nullable = false)
+    private String festivaPlace;
+    
+    @Column(nullable = false)
+    private String festivalPrice;
+    
+    @Column(nullable = false)
+    private String festivalAgency;
+    
+    @Column(nullable = false)
+    private String festivalInquiry;
+    
     @Column
-    private String imgFilePath; // 이미지 경로
+    private String filePath; // 업로드한 이미지 파일의 경로
+    
+    @Column
+    private String fileName; // 파일 이름
     
     private final String postGroup="festivalPost"; // 여러개의 포스트들을 분류하는 제목
     
-    public FestivalPost updateFestivalPost(String title, String content, String imgFilePath) {
+    public FestivalPost updateFestivalPost(String title, String content, String festivalArea, String festivalPeriod
+            , String festivalCharacter, String festivalInfo, String festivaPlace, String festivalPrice, String festivalAgency,
+            String festivalInquiry, String filePath, String fileName) {
         this.title=title;
         this.content=content;
-        this.imgFilePath=imgFilePath;
+        this.festivalArea=festivalArea;
+        this.festivalAgency=festivalAgency;
+        this.festivalCharacter=festivalCharacter;
+        this.festivalInfo=festivalInfo;
+        this.festivalInquiry=festivalInquiry;
+        this.festivalPeriod=festivalPeriod;
+        this.festivalPrice=festivalPrice;
+        this.festivaPlace=festivaPlace;
         
         return this;
     }

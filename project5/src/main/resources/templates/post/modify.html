@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{ layout/layout }">
+<body>
+    <div layout:fragment="content">
+        <div>
+            <form id="formModify" method="post" style="margin-top: 4px;">
+                <div class="card m-4 row g-5">
+                <div class="select_img" style="width: 20rem;">
+                    <img th:src="${post.filePath}" th:if="${post.filePath != null}" class="card-img-top card-img" name="imgFile"/>
+                    <input type="file" id="imgFileInput" name="imgFile" />
+                </div>
+                <div class="select_img_hidden">
+                    <img th:src="${post.filePath}" th:if="${post.filePath != null}" />
+                    <input type="hidden" name="hiddenImg" th:value="${post.filePath}"/>
+                </div>
+                <input id="id" name="id" class="form-control" th:value="${post.id}" type="hidden"/>
+                    <div class="mb-3 row">
+                        <label for="title"
+                            class="col-sm-2 col-form-label">제목</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                                id="title" name="title" th:value="${post.title}" required
+                                autofocus>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="author"
+                            class="col-sm-2 col-form-label">담당자</label>
+                        <div class="col-sm-10 my-4">
+                            <input type="text" class="form-control-plaintext"
+                                id="author" name="author" th:value="${post.author}" readonly />
+                        </div>
+                    </div>
+                </div>
+            <!-- content 모집내용 시작 -->
+            <div class="card m-4 g-5">
+                <label for="content" class="form-label mt-5 m-3">모집내용</label>
+                    <div class="mx-4 mb-2">
+                        <textarea id="content" name="content"
+                            class="form-control" rows="20" th:text="${post.content}" required></textarea>
+                    </div>
+                </div>
+
+            <!-- 지도폼 -->
+            <div class="card m-4 row g-5">
+                <div class="mb-3 my-2 row">
+                    <label for="totalMember"
+                        class="col-sm-2 col-form-label">모집인원</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control"
+                            id="totalMember" name="totalMember" th:value="${post.totalMember}" />
+                    </div>
+                    <label for="joinMember"
+                        class="col-sm-2 col-form-label">모집인원</label>
+                    <div class="col-sm-4">
+                        <input type="number"
+                            class="form-control-plaintext"
+                            id="joinMember" name="tjoinMember"
+                            th:value="${post.joinMember}" readonly />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="meetingDate"
+                        class="col-sm-2 col-form-label">모임기간</label>
+                    <div class="col-sm-4">
+                        <input type="datetime-local" class="form-control"
+                            id="meetingDate" name="meetingDate" th:value="${post.meetingDate}" readonly />
+                    </div> 
+                    <label for="closeDate"
+                        class="col-sm-2 col-form-label">신청마감</label>
+                    <div class="col-sm-4">
+                        <input type="datetime-local" class="form-control"
+                            id="closeDate" name="closeDate" th:value="${post.closeDate}" />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="place" class="col-sm-2 col-form-label">장소</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"
+                            id="place" name="place" th:value="${post.place}"/>
+                    </div>
+                </div>
+                <div class="card my-2">
+                    <h1>지도 들어갈 위치</h1>
+                </div>
+                <div class="my-2">
+                    <!-- 버튼 위치 -->
+                    <button class="btn btn-outline-danger" id="btnDelete">삭제</button>
+                    <button class="btn btn-outline-primary" id="btnUpdate">수정</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- 메인 div 끝 -->
+    <script layout:fragment="script">
+    const formModify = document.querySelector('#formModify')
+    
+    // 삭제버튼 이벤트리스너
+    const btnDelete = document.querySelector('#btnDelete')
+    btnDelete.addEventListener('click' , function(){
+    	   const result = confirm('삭제하시겠습니까?');
+    	    if(result) {
+    	        formModify.action='/post/delete';
+    	        formModify.method='post';
+    	        formModify.submit();
+    	    }
+    });
+    
+    // 수정버튼 이벤트리스너
+    const btnUpdate = document.querySelector('#btnUpdate');
+    btnUpdate.addEventListener('click', function() {
+        const title = document.querySelector('#title').value;
+        const content = document.querySelector('#content').value;
+        
+        if(title == '' || content == '') {
+            alert('제목과 내용을 입력하세요')
+            return;
+        }
+        
+        const result = confirm('수정하시겠습니까?');
+        if(result) {
+            formModify.action='/post/update';
+            formModify.method='post';
+            formModify.submit();
+        }
+    })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 댓글 관련 자바스크립트 함수/코드들을 작성한 스크립트 파일 -->
+    <script>
+    $("#imgFileInput").change(function(){
+    	if(this.files && this.files[0]) {
+    		const reader = new FileReader;
+    		reader.onload = function(data) {
+    			$(".select_img_hidden").attr("src", data.target.result).width(500);
+    		}
+    		reader.readAsDataURL(this.files[0]);
+    	}
+    	
+    })
+    
+    </script>
+    
+
+</body>
+</html>

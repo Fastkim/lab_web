@@ -1,12 +1,22 @@
 package com.example.project5.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.project5.domain.FestivalPost;
+import com.example.project5.domain.FreeSharePost;
+import com.example.project5.domain.RecruitPost;
 import com.example.project5.dto.FestivalPostCreateDto;
 import com.example.project5.dto.FestivalPostUpdateDto;
 import com.example.project5.repository.FestivalPostRepository;
@@ -30,13 +40,36 @@ public class FestivalPostService {
         return festivalPostRepository.findByOrderByIdDesc();
     }
     
-    public FestivalPost create(FestivalPostCreateDto dto) {
+    @Transactional(readOnly = true)
+    public FestivalPost create(FestivalPostCreateDto dto, MultipartFile file) throws IOException {
         log.info("create(dto={})", dto);
         
-        FestivalPost entity = festivalPostRepository.save(dto.toEntity()); 
+//        FestivalPost entity = festivalPostRepository.save(dto.toEntity()); 
+        FestivalPost entity = dto.toEntity();
         
-        return entity;
+        // 파일 저장 경로 설정
+        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\festivalImg";
         
+        UUID uuid = UUID.randomUUID();
+        // 파일 고유 이름 랜덤 생성
+        String fileName = uuid + "_" + file.getOriginalFilename();
+        File saveFile = new File(filePath ,fileName); // 파일 저장소
+        file.transferTo(saveFile); // throws Exception
+        
+        entity.setFileName(fileName);
+        entity.setFilePath("/festivalImg/" + fileName);
+        
+        return festivalPostRepository.save(entity);
+        
+    }
+    
+    public Page<FestivalPost> getList(int page){
+        log.info("page-getList(page={})",page);
+        List<Sort.Order> sorts=new ArrayList<>();
+        sorts.add(Sort.Order.desc("createdTime"));
+        Pageable pageable=PageRequest.of(page, 8, Sort.by(sorts));
+        
+        return this.festivalPostRepository.findAll(pageable);
     }
     
     @Transactional(readOnly = true)
@@ -58,13 +91,11 @@ public class FestivalPostService {
     public Integer update(FestivalPostUpdateDto dto) {
         log.info("update(dto={})", dto);
         
-        // 메서드에 @Transactional 애너테이션을 사용하고,
-        // (1) 수정하기 전의 엔터티 객체를 검색한 후에
-        // (2) 검색된 엔터티 객체를 수정하면
-        // 메서드가 종료될 때 데이터베이스 테이블에 자동으로 update SQL이 실행됨.
-        // PostRepository의 save() 메서드를 명시적으로 호출하지 않아도 됨.
         FestivalPost entity = festivalPostRepository.findById(dto.getId()).get(); // (1)
-        entity.updateFestivalPost(dto.getTitle(), dto.getContent(), dto.getImgFilePath()); // (2)
+        entity.updateFestivalPost(dto.getTitle(), dto.getContent(), 
+                dto.getFestivalAgency(), dto.getFestivalArea(), dto.getFestivalCharacter(),
+                dto.getFestivalInfo(), dto.getFestivalInquiry(), dto.getFestivalPeriod(),
+                dto.getFestivalPrice(), dto.getFestivaPlace(), dto.getFileName(), dto.getFilePath()); // (2)
         
         return entity.getId();
     }

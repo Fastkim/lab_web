@@ -11,12 +11,24 @@ public class FestivalPostUpdateDto {
     private Integer id;
     private String title;
     private String content;
-    private String imgFilePath;
+    private String festivalArea;
+    private String festivalPeriod;
+    private String festivalCharacter;
+    private String festivalInfo;
+    private String festivaPlace;
+    private String festivalPrice;
+    private String festivalAgency;
+    private String festivalInquiry;
+    private String filePath;
+    private String fileName;
 
     // DTO를 Entity 객체로 변환/리턴 -> PostService에서 PostRepository 메서드를 호출할 때.
     public FestivalPost toEntity() {
         return FestivalPost.builder()
-                .id(id).title(title).content(content).imgFilePath(imgFilePath)
+                .id(id).title(title).content(content)
+                .festivalAgency(festivalAgency).festivalArea(festivalArea)
+                .festivalCharacter(festivalCharacter).festivalInfo(festivalInfo).festivaPlace(festivaPlace)
+                .festivalInquiry(festivalInquiry).festivalPeriod(festivalPeriod).festivalPrice(festivalPrice)
                 .build();
     }
 }

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+a {color:#333; text-decoration:none;  }
+
+li {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+a {font-family: 'Noto Sans KR', 'Malgun Gothic',"맑은 고딕",'dotum', 'Helvetica';color:#555;margin:0;padding:0px;border:0;}
+
+/* global styles */
+body,form,h1,h2,h3,h4,h5,h6,ul,ul li,p,div,th,td,ol,ul,li,p,span,label,input,select,button,textarea,table td, th {font-family: 'Noto Sans KR','Malgun Gothic','맑은 고딕','dotum','Helvetica';color:#555;font-size:17px;margin:0;padding:0px;}
+
+#media > #maintext {
+    margin: 0;
+    padding: 0px;
+}
