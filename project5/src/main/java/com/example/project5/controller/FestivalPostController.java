@@ -30,14 +30,12 @@ public class FestivalPostController {
     
     private final FestivalPostService festivalPostService;
     
-    @GetMapping("/festivalPostList")
-    public String list(Model model,@RequestParam(value="page", defaultValue = "0")int page) {
+    @GetMapping("/festivalPostList") // 요청 URL/방식 매핑.
+    public String home(Model model) {
         log.info("list()");
-        //TODO 
-        //List<FreeSharePost> list = freeSharePostService.read();
-        Page<FestivalPost> paging=this.festivalPostService.getList(page);
-        model.addAttribute("paging",paging);
-        //model.addAttribute("list", list);
+        
+        List<FestivalPost> list = festivalPostService.read(); // DB에서 포스트 목록 전체 검색.
+        model.addAttribute("list", list);
         
         return "/community/festivalPostList";
     }
@@ -51,15 +49,15 @@ public class FestivalPostController {
     }
     
     @PostMapping("/festivalPostCreate")
-    public String create(FestivalPostCreateDto dto, RedirectAttributes attrs, @RequestParam("filePath") MultipartFile file) throws Exception {
+    public String create(RedirectAttributes attrs, FestivalPostCreateDto dto, @RequestParam("filePath") MultipartFile fileName) throws Exception {
         log.info("create(dto={})", dto);
         
         // 새 포스트 작성
-        FestivalPost entity = festivalPostService.create(dto, file);
+        FestivalPost entity = festivalPostService.create(dto, fileName);
         
         attrs.addFlashAttribute("createdId", entity.getId());
         
-        return "redirect:/";
+        return "redirect:/community/festivalPostList";
     }
     
     @GetMapping({"/festivalPostDetail", "/festivalPostModify" })
