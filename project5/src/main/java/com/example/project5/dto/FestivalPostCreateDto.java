@@ -16,19 +16,18 @@ public class FestivalPostCreateDto {
     private String festivalPeriod;
     private String festivalCharacter;
     private String festivalInfo;
-    private String festivaPlace;
+    private String festivalPlace;
     private String festivalPrice;
     private String festivalAgency;
     private String festivalInquiry;
-    private String filePath;
-    private String fileName;
+    
    
 
     public FestivalPost toEntity() {
         return FestivalPost.builder()
                 .title(title).content(content).author(author)
                 .festivalAgency(festivalAgency).festivalArea(festivalArea)
-                .festivalCharacter(festivalCharacter).festivalInfo(festivalInfo).festivaPlace(festivaPlace)
+                .festivalCharacter(festivalCharacter).festivalInfo(festivalInfo).festivalPlace(festivalPlace)
                 .festivalInquiry(festivalInquiry).festivalPeriod(festivalPeriod).festivalPrice(festivalPrice)
                 .build();
     }

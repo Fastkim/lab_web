@@ -52,7 +52,7 @@ public class FestivalPost extends BaseTimeEntity {
     private String festivalInfo;
     
     @Column(nullable = false)
-    private String festivaPlace;
+    private String festivalPlace;
     
     @Column(nullable = false)
     private String festivalPrice;
@@ -72,7 +72,7 @@ public class FestivalPost extends BaseTimeEntity {
     private final String postGroup="festivalPost"; // 여러개의 포스트들을 분류하는 제목
     
     public FestivalPost updateFestivalPost(String title, String content, String festivalArea, String festivalPeriod
-            , String festivalCharacter, String festivalInfo, String festivaPlace, String festivalPrice, String festivalAgency,
+            , String festivalCharacter, String festivalInfo, String festivalPlace, String festivalPrice, String festivalAgency,
             String festivalInquiry, String filePath, String fileName) {
         this.title=title;
         this.content=content;
@@ -83,7 +83,9 @@ public class FestivalPost extends BaseTimeEntity {
         this.festivalInquiry=festivalInquiry;
         this.festivalPeriod=festivalPeriod;
         this.festivalPrice=festivalPrice;
-        this.festivaPlace=festivaPlace;
+        this.festivalPlace=festivalPlace;
+        this.fileName=fileName;
+        this.filePath=filePath;
         
         return this;
     }

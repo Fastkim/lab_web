@@ -15,7 +15,7 @@ public class FestivalPostUpdateDto {
     private String festivalPeriod;
     private String festivalCharacter;
     private String festivalInfo;
-    private String festivaPlace;
+    private String festivalPlace;
     private String festivalPrice;
     private String festivalAgency;
     private String festivalInquiry;
@@ -27,8 +27,9 @@ public class FestivalPostUpdateDto {
         return FestivalPost.builder()
                 .id(id).title(title).content(content)
                 .festivalAgency(festivalAgency).festivalArea(festivalArea)
-                .festivalCharacter(festivalCharacter).festivalInfo(festivalInfo).festivaPlace(festivaPlace)
+                .festivalCharacter(festivalCharacter).festivalInfo(festivalInfo).festivalPlace(festivalPlace)
                 .festivalInquiry(festivalInquiry).festivalPeriod(festivalPeriod).festivalPrice(festivalPrice)
+                .filePath(filePath).fileName(fileName)
                 .build();
     }
 }

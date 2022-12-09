@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{ layout/layout }">
-    <head>
-    </head>
 	<!--/* layout/layout.html 파일의 "content" 프래그먼트에 삽입될 컨텐트  */-->
     <div layout:fragment="content">
         <div class="card-header">
@@ -83,7 +81,7 @@
                                 <tr th:each="festivalPost : ${ list }">
                                     <td th:text="${ festivalPost.id }"></td>
                                     <td>
-                                        <img class="card col-md-3"
+                                        <img
                                             th:src="${ festivalPost.filePath}" 
                                             alt="첨부 이미지" 
                                             th:if="${festivalPost.fileName != null}"
@@ -101,26 +99,5 @@
                 </div>
             </div>
         </div>
-        <!-- 페이징처리 시작 -->
-    <div th:if="${!paging.isEmpty()}">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"
-                th:classappend="${!paging.hasPrevious} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number-1}|}">
-                    <span>이전</span></a>
-            </li>
-            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
-                th:if="${page >= paging.number-5 and page <= paging.number+5}"
-                th:classappend="${page == paging.number} ? 'active'"
-                class="page-item">
-                <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
-            </li>
-            <li class="page-item"
-                th:classappend="${!paging.hasNext} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
-                    <span>다음</span></a>
-            </li>
-        </ul>
-    </div>
-    <!-- 페이징처리 끝 -->
+        
 </html>

@@ -40,7 +40,7 @@ public class FestivalPostService {
         return festivalPostRepository.findByOrderByIdDesc();
     }
     
-    @Transactional(readOnly = true)
+    
     public FestivalPost create(FestivalPostCreateDto dto, MultipartFile file) throws IOException {
         log.info("create(dto={})", dto);
         
@@ -53,6 +53,7 @@ public class FestivalPostService {
         UUID uuid = UUID.randomUUID();
         // 파일 고유 이름 랜덤 생성
         String fileName = uuid + "_" + file.getOriginalFilename();
+        
         File saveFile = new File(filePath ,fileName); // 파일 저장소
         file.transferTo(saveFile); // throws Exception
         
@@ -95,7 +96,7 @@ public class FestivalPostService {
         entity.updateFestivalPost(dto.getTitle(), dto.getContent(), 
                 dto.getFestivalAgency(), dto.getFestivalArea(), dto.getFestivalCharacter(),
                 dto.getFestivalInfo(), dto.getFestivalInquiry(), dto.getFestivalPeriod(),
-                dto.getFestivalPrice(), dto.getFestivaPlace(), dto.getFileName(), dto.getFilePath()); // (2)
+                dto.getFestivalPrice(), dto.getFestivalPlace(), dto.getFileName(), dto.getFilePath()); // (2)
         
         return entity.getId();
     }
