@@ -29,7 +29,7 @@ public class FreeSharePostReplyReadDto {
                 .replyText(entity.getReplyText())
                 .writer(entity.getWriter())
                 .createdTime(entity.getCreatedTime())
-                .modifiedTime(entity.getModifidTime())
+                .modifiedTime(entity.getModifiedTime())
                 .build();
     }
 }

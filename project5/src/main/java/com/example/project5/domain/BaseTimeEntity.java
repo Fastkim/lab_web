@@ -20,6 +20,6 @@ public class BaseTimeEntity {
     private LocalDateTime createdTime;
     
     @LastModifiedDate
-    private LocalDateTime modifidTime;
+    private LocalDateTime modifiedTime;
     
 }

@@ -15,6 +15,13 @@
                         <input id="id" class="form-control" th:value="${ festivalPost.id }" readonly />
                     </div>
                     <div class="my-2">
+                        <img
+                                            th:src="${ festivalPost.filePath}" 
+                                            alt="첨부 이미지" 
+                                            th:if="${festivalPost.fileName != null}"
+                                            style="width:40%; height:40%" />
+                    </div>
+                    <div class="my-2">
                         <label for="title" class="form-label">포스트 제목</label>
                         <input id="title" class="form-control" th:value="${ festivalPost.title }" readonly />
                     </div>
@@ -25,6 +32,44 @@
                     <div class="my-2">
                         <label for="author" class="form-label">작성자</label>
                         <input id="author" class="form-control" th:value="${ festivalPost.author }" readonly />
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalArea" class="form-label">개최지역</label>
+                        <input id="festivalArea" class="form-control" th:value="${ festivalPost.festivalArea }" readonly />
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalPeriod" class="form-label">개최기간</label>
+                        <input id="festivalPeriod" class="form-control" th:value="${ festivalPost.festivalPeriod }" readonly />
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalCharacter" class="form-label">축제 성격</label>
+                        <input id="festivalCharacter" class="form-control" th:value="${ festivalPost.festivalCharacter }" readonly />
+                            
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalInfo" class="form-label">관련 누리집</label>
+                        <input id="festivalInfo" class="form-control" th:value="${ festivalPost.festivalInfo }" readonly />
+                       
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalPlace" class="form-label">축제 장소</label>
+                        <input id="festivalPlace" class="form-control" th:value="${ festivalPost.festivalPlace }" readonly />
+                    
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalPrice" class="form-label">요금</label>
+                        <input id="festivalPrice" class="form-control" th:value="${ festivalPost.festivalPrice }" readonly />
+                       
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalAgency" class="form-label">주최/주관기관</label>
+                        <input id="festivalAgency" class="form-control" th:value="${ festivalPost.festivalAgency }" readonly />
+                           
+                    </div>
+                    <div class="my-2">
+                        <label for="festivalInquiry" class="form-label">문의</label>
+                        <input id="festivalInquiry" class="form-control" th:value="${ festivalPost.festivalInquiry }" readonly />
+                        
                     </div>
                     <div class="my-2">
                         <label for="createdTime" class="form-label">작성 시간</label>

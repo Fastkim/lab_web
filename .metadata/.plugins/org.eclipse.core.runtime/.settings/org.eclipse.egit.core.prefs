@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\ITWILL\\git\\project5\\.git;C\:\\Users\\ITWILL\\.git;E\:\\study\\lab-web\\.git;C\:\\Users\\ITWILL\\git\\Java_ITwill\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\ITWILL\\git\\project5\\.git;C\:\\Users\\ITWILL\\.git;.git;C\:\\Users\\ITWILL\\git\\Java_ITwill\\.git;
+GitRepositoriesView.GitDirectories=C\:\\Users\\ITWILL\\git\\project5\\.git;E\:\\study\\lab-web\\project5\\.git;E\:\\study\\lab-web\\project5\\git\\.git;C\:\\Users\\ITWILL\\.git;E\:\\study\\lab-web\\.git;E\:\\study\\lab-web\\project5\\project5\\.git;C\:\\Users\\ITWILL\\git\\Java_ITwill\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Users\\ITWILL\\git\\project5\\.git;project5\\.git;project5\\git\\.git;C\:\\Users\\ITWILL\\.git;.git;project5\\project5\\.git;C\:\\Users\\ITWILL\\git\\Java_ITwill\\.git;
 RepositoryGroups.uuids=
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
